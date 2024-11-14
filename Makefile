@@ -6,7 +6,7 @@ TARGET = process_counter
 
 all: $(TARGET)
 
-$(TARGET): process_counter.c
+$(TARGET): main.c
 	$(CC) $(CFLAGS) -o $(TARGET) process_counter.c -lm
 
 clean:
