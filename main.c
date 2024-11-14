@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
             return 1;
         } else if (pid == 0) {
             // Child process
-            run_process(i + 1, seconds);
+            read_process(i + 1, seconds);
         }
         // Parent process continues the loop to create more child processes
     }
