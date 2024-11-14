@@ -7,7 +7,7 @@ TARGET = process_counter
 all: $(TARGET)
 
 $(TARGET): main.c
-	$(CC) $(CFLAGS) -o $(TARGET) process_counter.c -lm
+	$(CC) $(CFLAGS) -o $(TARGET) main.c -lm
 
 clean:
 	rm -f $(TARGET)
