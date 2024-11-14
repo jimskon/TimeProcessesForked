@@ -5,8 +5,26 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <time.h>
+#include <stdatomic.h>
 
-void run_process(int id, int seconds) {
+// Shared memory (global)
+volatile atomic_int *shared_mem;
+
+void read_process(int id, int seconds) {
+    long long counter = 0;
+    time_t start_time = time(NULL);
+
+    while (time(NULL) - start_time < seconds) {
+        counter++;
+        double result = sqrt((double)counter); // Compute square root
+        (void)result; // Suppress unused variable warning
+    }
+
+    printf("Process %d: Counter = %lld\n", id, counter);
+    exit(0); // Terminate the child process
+}
+
+void write_process(int id, int seconds) {
     long long counter = 0;
     time_t start_time = time(NULL);
 
